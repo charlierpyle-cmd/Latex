@@ -1,0 +1,250 @@
+\documentclass[10pt]{exam}
+\printanswers
+\usepackage{epsfig,amssymb}
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty}
+\usepackage{listings}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+\boxedpoints
+\addpoints
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{graphics}
+
+\pagestyle{headandfoot}
+\firstpageheader{\Large Math 309}{{\Large Homework 2}}{\Large Fall 2026}
+
+\begin{document}
+
+\hrule
+
+\vspace{.50cm} Name:
+\text{Charlie Pyle}
+\vspace{.25cm}
+\begin{questions}
+
+\question Determine if each of the following statements is true or false. If it is true, state it as a theorem and prove it; if it is false, justify your answer by giving a counterexample.
+
+\begin{parts}
+\part If $a$, $b$, and $c$ are any integers, then $ac+bc$ is an even integer.
+\part If $a$ and $b$ are even integers and $c$ is an odd integer, then $ac+bc$ is an even integer.
+\end{parts}
+
+\begin{solution}
+\textbf{Part 1:}
+
+This statement is false.
+
+As a counterexample, let $a=1$, $b=0$, and $c=1$. These are all integers, and we compute
+\begin{align*}
+ac+bc = (1)(1)+(0)(1) = 1+0 = 1,
+\end{align*}
+which is an odd integer, not an even integer. Since we have exhibited integers $a$, $b$, and $c$ for which $ac+bc$ is not even, the statement is false.
+
+\textbf{Part 2:}
+
+\textbf{Theorem.} If $a$ and $b$ are even integers and $c$ is an odd integer, then $ac+bc$ is an even integer.
+
+\textit{Proof.} Assume that $a$ and $b$ are even integers and that $c$ is an odd integer. We will show that $ac+bc$ is an even integer.
+
+Since $a$ is an even integer, there exists an integer $m$ such that
+\begin{align*}
+a = 2m.
+\end{align*}
+
+Since $b$ is an even integer, there exists an integer $n$ such that
+\begin{align*}
+b = 2n.
+\end{align*}
+
+Since $c$ is an odd integer, there exists an integer $k$ such that
+\begin{align*}
+c = 2k+1.
+\end{align*}
+ 
+Through substitution and algebra, we obtain
+\begin{align*}
+ac+bc &= c(a+b)\\
+&= (2k+1)(2m+2n)\\
+&= (2k+1) \cdot 2(m+n)\\
+&= 2\bigl[(2k+1)(m+n)\bigr].
+\end{align*}
+ 
+Since $k$, $m$, and $n$ are integers, by the closure properties of addition and multiplication for integers, there exists an integer $p$ such that
+\begin{align*}
+p = (2k+1)(m+n).
+\end{align*}
+ 
+We have shown that
+\begin{align*}
+ac+bc = 2p,
+\end{align*}
+ 
+where $p$ is an integer. By the definition of an even integer, $ac+bc$ is an even integer. $\blacksquare$
+\end{solution}
+
+\question Suppose that $P$ and $Q$ are statements, and assume that both $P$ and $Q$ are true. Determine the truth value of each of the following statements.
+
+\begin{parts}
+\part $P \wedge Q$
+\part $P \vee Q$
+\part $P \Rightarrow Q$
+\part $(\neg P) \Rightarrow Q$
+\part $P \wedge (\neg Q)$
+\part $P \vee (\neg Q)$
+\part $\neg (P \vee Q)$
+\part $\neg (P \wedge Q)$
+\end{parts}
+
+\begin{solution}
+Enter your solution here: \\
+We are given that $P$ is true and $Q$ is true.\\
+
+\textbf{Part 1:} $P \wedge Q$ is \textbf{True}, since both $P$ and $Q$ are true.\\
+
+\textbf{Part 2:} $P \vee Q$ is \textbf{True}, since at least one of $P$ and $Q$ is true.\\
+
+\textbf{Part 3:} $P \Rightarrow Q$ is \textbf{True}, since a conditional statement with a true hypothesis and a true conclusion is true.\\
+
+\textbf{Part 4:} $(\neg P) \Rightarrow Q$ is \textbf{True}. Since $P$ is true, $\neg P$ is false, and a conditional statement with a false hypothesis is always true.\\
+
+\textbf{Part 5:} $P \wedge (\neg Q)$ is \textbf{False}. Since $Q$ is true, $\neg Q$ is false, so $P \wedge (\neg Q)$ is true and false, which is false.\\
+
+\textbf{Part 6:} $P \vee (\neg Q)$ is \textbf{True}, since $P$ is true, so the statement is true regardless of the truth value of $\neg Q$.\\
+
+\textbf{Part 7:} $\neg (P \vee Q)$ is \textbf{False}. Since $P \vee Q$ is true, its negation is false.\\
+
+\textbf{Part 8:} $\neg (P \wedge Q)$ is \textbf{False}. Since $P \wedge Q$ is true, its negation is false.
+\end{solution}
+
+\question Suppose that $P$, $Q$, $R$, and $S$ are statements for which you know that $P$ is true, $Q$ is false, and $R \Rightarrow S$ is false. What conclusion (if any) can be made about the truth value of each of the following statements? Carefully explain your answers.
+
+\begin{parts}
+\part $\neg(\neg P) \vee (Q \Rightarrow Q)$
+\part $R \wedge (\neg S)$
+\part $R \wedge S$
+\end{parts}
+
+\begin{solution}
+Enter your solution here: \\
+\textbf{Part 1:} $\neg(\neg P) \vee (Q \Rightarrow Q)$ is \textbf{True}. The statement $Q \Rightarrow Q$ is a tautology, so it is true regardless of the truth value of $Q$. Since $Q \Rightarrow Q$ is true, the entire statement is true regardless of the truth value of $\neg(\neg P)$.\\
+
+\textbf{Part 2:} $R \wedge (\neg S)$ is \textbf{True}. Since $R$ is true and $S$ is false, $\neg S$ is true. Thus $R \wedge (\neg S)$ is a conjunction of two true statements, which is true.\\
+
+\textbf{Part 3:} $R \wedge S$ is \textbf{False}. Since $R$ is true and $S$ is false, the conjunction of a true statement and a false statement is false.
+\end{solution}
+
+\question Let $a$, $b$, and $c$ be integers. Consider the following statements:
+\begin{enumerate}[label=(\alph*)]
+    \item If $a$ divides $b$ and $a$ divides $c$, then $a$ divides $b+c$.
+    \item If $a$ divides $b+c$, then $a$ divides $b$ and $a$ divides $c$.
+    \item If $a$ does not divide $b+c$, then $a$ does not divide $b$ and $a$ does not divide $c$.
+    \item If $a$ does not divide $b+c$, then $a$ does not divide $b$ or $a$ does not divide $c$.
+    \item We have that $a$ does not divide $b$, or $a$ does not divide $c$, or $a$ divides $b+c$.
+\end{enumerate}
+
+(4.1)
+Convert each statement into a symbolic statement, using clearly labeled smaller statements $P$, $Q$, and $R$.\\
+(4.2)
+For each of the statements (b), (c), (d), and (e), determine if it is equivalent to statement (a). Use the symbolic representations you obtained in 4.1 and carefully explain your answers using theorems from class.
+
+\begin{solution}
+Enter your solution here: \\
+\textbf{Part 1:}
+
+Let the following smaller statements be defined:
+\begin{itemize}
+    \item $P$: $a$ divides $b$.
+    \item $Q$: $a$ divides $c$.
+    \item $R$: $a$ divides $b+c$.
+\end{itemize}
+
+Using these statements, we translate each of the given statements symbolically.
+
+\begin{align*}
+\text{(a)} \quad &(P \wedge Q) \Rightarrow R\\
+\text{(b)} \quad &R \Rightarrow (P \wedge Q)\\
+\text{(c)} \quad &(\neg R) \Rightarrow (\neg P \wedge \neg Q)\\
+\text{(d)} \quad &(\neg R) \Rightarrow (\neg P \vee \neg Q)\\
+\text{(e)} \quad &\neg P \vee \neg Q \vee R
+\end{align*}
+
+\textbf{Part 2:}
+
+Rewrite (a) using the Implication Law and De Morgan's Law:
+
+\begin{align*}
+(P \wedge Q) \Rightarrow R
+&\equiv \neg(P \wedge Q) \vee R
+&& \text{Implication Law}\\
+&\equiv (\neg P \vee \neg Q) \vee R
+&& \text{De Morgan's Law}
+\end{align*}
+
+\textbf{(b):} Statement (b) is the converse of statement (a): it swaps the hypothesis and conclusion of (a) rather than following from an equivalence law. A conditional statement is not generally equivalent to its converse, so \textbf{(b) is not equivalent to (a).}
+
+\textbf{(c):} Rewrite using the Implication Law and Double Negation:
+\begin{align*}
+(\neg R) \Rightarrow (\neg P \wedge \neg Q)
+&\equiv \neg(\neg R) \vee (\neg P \wedge \neg Q)
+&& \text{Implication Law}\\
+&\equiv R \vee (\neg P \wedge \neg Q)
+&& \text{Double Negation}
+\end{align*}
+This does not match the form $(\neg P \vee \neg Q) \vee R$ obtained for (a), since $\vee$ does not distribute trivially over the $\wedge$ here. To confirm they are genuinely different, let $P = T,\ Q = F,\ R = F$:
+\begin{align*}
+\text{(a):} \quad (\neg T \vee \neg F) \vee F &\equiv (F \vee T) \vee F \equiv T\\
+\text{(c):} \quad F \vee (\neg T \wedge \neg F) &\equiv F \vee (F \wedge T) \equiv F
+\end{align*}
+Truth values differ, so \textbf{(c) is not equivalent to (a).}
+
+\textbf{(d):} Contrapositive of (a). Rewrite using the Implication Law, Double Negation, and the Commutative Law:
+\begin{align*}
+(\neg R) \Rightarrow (\neg P \vee \neg Q)
+&\equiv \neg(\neg R) \vee (\neg P \vee \neg Q)
+&& \text{Implication Law}\\
+&\equiv R \vee (\neg P \vee \neg Q)
+&& \text{Double Negation}\\
+&\equiv (\neg P \vee \neg Q) \vee R
+&& \text{Commutative Law}
+\end{align*}
+Matches the form of (a), so \textbf{(d) is equivalent to (a).}
+
+\textbf{(e):} 
+\begin{align*}
+\neg P \vee \neg Q \vee R \equiv (\neg P \vee \neg Q) \vee R
+&& \text{Associative Law}
+\end{align*}
+Matches the form of (a), so \textbf{(e) is equivalent to (a).}
+\end{solution}
+
+\question Let $Q$ be a statement. Using only the symbols $Q$, $\wedge$, $\vee$, and $\neg$, and parenthesis, but not necessarily all of these symbols, give an example of a tautology. Check that your proposed statement is a tautology with a truth table.
+
+\begin{solution}
+Enter your solution here: \\
+Consider the statement $Q \vee (\neg Q)$.
+
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+$Q$ & $\neg Q$ & $Q \vee (\neg Q)$ \\ \hline
+T & F & T \\ \hline
+F & T & T \\ \hline
+\end{tabular}
+\end{center}
+
+Since $Q \vee (\neg Q)$ is true for every possible truth value of $Q$, it is a tautology.
+\end{solution}
+
+\end{questions}
+
+\end{document}
