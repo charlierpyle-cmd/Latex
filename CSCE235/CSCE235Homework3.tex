@@ -1,0 +1,405 @@
+\documentclass[10pt]{exam}
+\printanswers
+\usepackage{epsfig,amssymb}
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty} 
+\usepackage{listings}
+\setlength{\parindent}{0pt} %
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+\boxedpoints
+\addpoints
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{graphics}
+
+\pagestyle{headandfoot}
+\firstpageheader{\Large CSCE 235}{{\Large Assignment 3}}{\Large Spring 2026}
+
+\begin{document}
+
+\hrule
+
+\vspace{.50cm} Name:
+\text{Charlie Pyle} 
+\\ NUID: 22821006
+\vspace{.50cm}
+
+\textbf{Instructions} Follow instructions \emph{carefully}, failure to do so will result in points being deducted. You may write or type out your answers. Be sure to show sufficient work to justify your answer(s).
+
+
+\begin{questions}
+
+\question[6] Use set builder notation to give a description of each of these sets
+\begin{parts}
+\part \{ -15, -10, -5, 0, 5, 10, 15  \}
+\part \{ 0, 6, 12, …, 66 \}
+\end{parts}
+
+\begin{solution}
+    Enter your solution here: \\
+    A: 
+    \begin{align*}
+    \{x \mid (x = 5k), k \in \mathbb{Z}, -3 \leq k \leq 3 \}
+    \end{align*}
+    B: 
+    \begin{align*}
+    \{x \mid (x = 6k), k \in \mathbb{Z}, 0 \leq k \leq 11 \}
+    \end{align*}
+\end{solution}
+
+\question[6] Determine whether these statements are true or false.
+\begin{enumerate} [label=(\alph*)]
+    \item $2026 \in \{2026\}$
+    \item $\{2026\} \in \{2026\}$
+    \item $\{2026\} \subseteq \{2026\}$
+    \item $\{2026\} \subseteq \{\{2026\}\}$
+    \item $\{2026\} \subsetneq \{2026, \{2026\}\}$
+    \item $\{\{2026\}\} \subsetneq \{\{2026\}, \{2026\}\}$
+\end{enumerate}
+
+\begin{solution}
+    Enter your solution here: \\
+    A: 
+    \begin{align*}
+    2026 \in \{2026\} \quad \text{True}
+    \end{align*}
+    B: 
+    \begin{align*}
+    \{2026\} \in \{2026\} \quad \text{False}
+    \end{align*}
+    C: 
+    \begin{align*}
+    \{2026\} \subseteq \{2026\} \quad \text{True}
+    \end{align*}
+    D: 
+    \begin{align*}
+    \{2026\} \subseteq \{\{2026\}\} \quad \text{False}
+    \end{align*}
+    E: 
+    \begin{align*}
+    \{2026\} \subsetneq \{2026, \{2026\}\} \quad \text{True}
+    \end{align*}
+    F: 
+    \begin{align*}
+    \{\{2026\}\} \subsetneq \{\{2026\}, \{2026\}\} \quad \text{False}
+    \end{align*}
+\end{solution}
+
+\question[6] What is the cardinality of each of the following?
+\begin{enumerate} [label=(\alph*)]
+    \item $2026$
+    \item $\{\}$
+    \item $\{2026\}$
+    \item $\{2026,2026\}$
+    \item $\{2026, \{2026\}\}$
+    \item $\{2026, \{2026\}, \{2026, \{2026\}\}\}$
+\end{enumerate}
+
+\begin{solution}
+    Enter your solution here: \\
+    A: Undefined - Not a set
+    
+    B: 0
+    
+    C: 1
+    
+    D: 1
+    
+    E: 2
+    
+    F: 3
+\end{solution}
+
+\question[8] Let $A = \{hydrogen, oxygen, sodium\}, B =\{sodium, zinc\}$, and $C = \{hydrogen, boron, lead\}$.  Find the following
+\begin{enumerate} [label=(\alph*)]
+    \item $P(A)$
+    \item $P(A \cup B)$
+    \item $A \times C$
+    \item $A \times B \times C$
+\end{enumerate}
+
+\begin{solution}
+    Enter your solution here: \\
+    Given:\\
+    A = \{\text{H}, \text{O}, \text{Na}\}\\
+    B = \{\text{Na}, \text{Zn}\}\\
+    C = \{\text{H}, \text{Bo}, \text{Pb}\}\\
+    Where: H = hydrogen, O = oxygen, Na = sodium, Zn = zinc, Bo = boron, Pb = lead\\
+    A:
+    \begin{align*}
+    A = &\{\text{H}, \text{O}, \text{Na}\}\\
+    P(A) = \{&\emptyset, \{\text{H}\}, \{\text{O}\}, \{\text{Na}\}, \\
+             &\{\text{H},\text{O}\}, \{\text{H},\text{Na}\}, \{\text{O},\text{Na}\}, \\
+             &\{\text{H},\text{O},\text{Na}\}\}
+    \end{align*}
+    B:
+    \begin{align*}
+    A \cup B = &\{\text{H}, \text{O}, \text{Na}, \text{Zn}\}\\
+    P(A\cup B) = \{&\emptyset, \{\text{H}\}, \{\text{O}\}, \{\text{Na}\}, \{\text{Zn}\}, \\
+                   &\{\text{H},\text{O}\}, \{\text{H},\text{Na}\}, \{\text{H},\text{Zn}\}, 
+                   \{\text{O},\text{Na}\}, \{\text{O},\text{Zn}\}, \{\text{Na},\text{Zn}\}, \\
+                   &\{\text{H},\text{O},\text{Na}\}, \{\text{H},\text{O},\text{Zn}\}, 
+                    \{\text{H},\text{Na},\text{Zn}\}, \{\text{O},\text{Na},\text{Zn}\}, \\
+                   &\{\text{H},\text{O},\text{Na},\text{Zn}\}\}
+    \end{align*}
+    C:
+    \begin{align*}
+    A = &\{\text{H}, \text{O}, \text{Na}\}\\
+    C = &\{\text{H}, \text{Bo}, \text{Pb}\}\\
+    A \times C = & \{(\text{H},\text{H}),(\text{H},\text{Bo}),(\text{H},\text{Pb}), \\
+                   &(\text{O},\text{H}),(\text{O},\text{Bo}),(\text{O},\text{Pb}), \\
+                   &(\text{Na},\text{H}),(\text{Na},\text{Bo}),(\text{Na},\text{Pb})\}
+    \end{align*}
+    D:
+    \begin{align*}
+    A = &\{\text{H}, \text{O}, \text{Na}\}\\
+    B = &\{\text{Na}, \text{Zn}\}\\
+    C = &\{\text{H}, \text{Bo}, \text{Pb}\}\\
+    A \times B \times C = &\{(\text{H},\text{Na},\text{H}),(\text{H},\text{Na},\text{Bo}),(\text{H},\text{Na},\text{Pb}), \\
+                            &(\text{H},\text{Zn},\text{H}),(\text{H},\text{Zn},\text{Bo}),(\text{H},\text{Zn},\text{Pb}), \\
+                            &(\text{O},\text{Na},\text{H}),(\text{O},\text{Na},\text{Bo}),(\text{O},\text{Na},\text{Pb}), \\
+                            &(\text{O},\text{Zn},\text{H}),(\text{O},\text{Zn},\text{Bo}),(\text{O},\text{Zn},\text{Pb}), \\
+                            &(\text{Na},\text{Na},\text{H}),(\text{Na},\text{Na},\text{Bo}),(\text{Na},\text{Na},\text{Pb}), \\
+                            &(\text{Na},\text{Zn},\text{H}),(\text{Na},\text{Zn},\text{Bo}),(\text{Na},\text{Zn},\text{Pb})\}
+    \end{align*}
+\end{solution}
+
+\question[8] Let A be the set of students who attend the Capybara cafe, and let B be the set of students who drink Shamrock Shakes. Describe the students in each of these sets.
+\begin{enumerate} [label=(\alph*)]
+    \item $A \cap B$
+    \item $A \cup B$
+    \item $A - B$
+    \item $B - A$
+\end{enumerate}
+
+\begin{solution}
+    Enter your solution here:\\
+    A: $A \cap B$\\
+    Students who attend the Capybara cafe and drink Shamrock Shakes.
+    
+    B: $A \cup B$\\
+    Students who attend the Capybara cafe or drink Shamrock Shakes.
+    
+    C: $A - B$\\
+    Students who attend the Capybara cafe and do not drink Shamrock Shakes.
+    
+    D: $B - A$\\
+    Students who drink Shamrock Shakes and do not attend the Capybara cafe. 
+\end{solution}
+
+\question[6] Find the sets A and B if $A - B = \{$apple, grape, banana, mango$\}$, $B - A = \{$blackberry, raspberry$\}$, and $A \cap B = \{$strawberry, kiwi, pineapple$\}$.
+
+\begin{solution}
+    Enter your solution here: \\
+    A: \{apple, grape, banana, mango, strawberry, kiwi, pineapple\}
+    
+    B: \{blackberry, raspberry, strawberry, kiwi, pineapple \}
+\end{solution}
+
+\question[6] What can you say about the sets A and B if we know that
+\begin{enumerate} [label=(\alph*)]
+    \item $A \cap B = B$
+    \item $A \cup B = A$
+    \item $A - B = B - A$
+\end{enumerate}
+
+\begin{solution}
+    Enter your solution here: \\
+    A: B is a subset of A\\
+    B: B is a subset of A\\
+    C: A and B are equal sets
+\end{solution}
+
+\question[20] State whether each of the following is a function, if so prove it is onto, and/or one-to-one for $f: \mathbb{Z} \rightarrow \mathbb{Z}$:
+\begin{enumerate} [label=(\alph*)]
+    \item $f(x) = 2x - 3$
+    \item $f(x) = 5x^2$
+    \item $f(x) = -2x^2+3$
+    \item $f(x) = \frac{\sqrt{x}}{5}$
+\end{enumerate}
+
+\begin{solution}
+    Enter your solution here: \\
+    \textbf{A:}\\
+    $f: \mathbb{Z} \rightarrow \mathbb{Z} \quad f(x) = 2x - 3$\\
+    \textbf{Function:} Yes, this is a valid function since every integer input produces exactly one integer output.\\
+    \textbf{1-to-1:}\\
+    Suppose $f(x_1) = f(x_2)$:
+    \begin{align*}
+    2x_1 - 3 &= 2x_2 - 3 \\
+    2x_1 &= 2x_2 \\
+    x_1 &= x_2
+    \end{align*}
+    Therefore $f$ would be 1-to-1.\\
+    \textbf{Onto:}
+    Let $y = 2x - 3$, solve for $x$:
+    \begin{align*}
+    2x &= y + 3 \\
+    x &= \frac{y + 3}{2}
+    \end{align*}
+    If $y = 0$, then $x = \dfrac{3}{2}$, which is not an integer, so $f(x)$ would not be onto.\\
+    
+    \textbf{B:}\\
+    $f: \mathbb{Z} \rightarrow \mathbb{Z} \quad f(x) = 5x^2$\\
+    \textbf{Function:} Yes, this is a valid function since every integer input produces exactly one integer output.\\
+    \textbf{1-to-1:}\\
+    $f$ is \textbf{not} 1-to-1. Counterexample: $f(1) = 5(1)^2 = 5$ and $f(-1) = 5(-1)^2 = 5$, so $f(1) = f(-1)$ therefore $f$ can not be 1-to-1.\\
+    \textbf{Onto:}\\
+    $f$ is \textbf{not onto}. Since $5x^2 \geq 0$ for all $x \in \mathbb{Z}$, no integer $x$ satisfies $f(x) = -1$, so $f$ can not be onto.\\
+
+    \textbf{C:}\\
+    $f: \mathbb{Z} \rightarrow \mathbb{Z} \quad f(x) = -2x^2+3$\\
+    \textbf{Function:} Yes, this is a valid function since every integer input produces exactly one integer output.\\
+    \textbf{1-to-1:}\\
+    $f$ is \textbf{not} 1-to-1. Counterexample: $f(1) = -2(1)^2 + 3 = 1$ and $f(-1) = -2(-1)^2 + 3 = 1$, so $f(1) = f(-1)$ therefore $f$ can not be 1-to-1.\\
+    \textbf{Onto:}\\
+    $f$ is \textbf{not onto}. Since $-2x^2 \leq 0$, we have $f(x) = -2x^2 + 3 \leq 3$ for all $x \in \mathbb{Z}$. Thus no integer $x$ satisfies $f(x) = 4$, so $f$ can not be onto.\\
+
+    \textbf{D:}\\
+    $f: \mathbb{Z} \rightarrow \mathbb{Z} \quad f(x) = \frac{\sqrt{x}}{5}$\\
+    This is \textbf{not a valid function} from $\mathbb{Z} \to \mathbb{Z}$.\\
+    For example, $x = -1 \in \mathbb{Z}$ gives $f(-1) = \frac{\sqrt{-1}}{5}$, which is not a real number. Since the expression is undefined for negative integers, $f$ is not defined on all of $\mathbb{Z}$ and therefore is not a function from $\mathbb{Z} \to \mathbb{Z}$.
+\end{solution}
+
+\question[20] State whether each of the following is a function, if so prove it is onto, and/or one-to-one for $f: \mathbb{R} \rightarrow \mathbb{R}$:
+\begin{enumerate} [label=(\alph*)]
+    \item $f(x) = 2x - 3$
+    \item $f(x) = 5x^2$
+    \item $f(x) = -2x^2+3$
+    \item $f(x) = \frac{\sqrt{x}}{5}$
+\end{enumerate}
+
+\begin{solution}
+    Enter your solution here: \\
+    \textbf{A:}\\
+    \textbf{Function:} Yes, this is a valid function since every real number input produces exactly one real number output.\\
+    $f: \mathbb{R} \rightarrow \mathbb{R} \quad f(x) = 2x - 3$\\
+    \textbf{1-to-1:}\\
+    Suppose $f(x_1) = f(x_2)$:
+    \begin{align*}
+    2x_1 - 3 &= 2x_2 - 3 \\
+    2x_1 &= 2x_2 \\
+    x_1 &= x_2
+    \end{align*}
+    Therefore $f$ would be 1-to-1.\\
+    \textbf{Onto:}
+    Let $y = 2x - 3$, solve for $x$:
+    \begin{align*}
+    2x &= y + 3 \\
+    x &= \frac{y + 3}{2}
+    \end{align*}
+    If $y = 0$, then $x = \dfrac{3}{2}$, which is a real number, so $f(x)$ would be onto.\\
+    
+    \textbf{B:}\\ 
+    $f: \mathbb{R} \rightarrow \mathbb{R} \quad f(x) = 5x^2$\\
+    \textbf{Function:} Yes, this is a valid function since every real number input produces exactly one real number output.\\
+    \textbf{1-to-1:}\\
+    $f$ is \textbf{not} 1-to-1. Counterexample: $f(1) = 5(1)^2 = 5$ and $f(-1) = 5(-1)^2 = 5$, so $f(1) = f(-1)$ therefore $f$ can not be 1-to-1.\\
+    \textbf{Onto:}\\
+    $f$ is \textbf{not onto}. Since $5x^2 \geq 0$ for all $x \in \mathbb{R}$, we have $f(x) \geq 0$ for all $x \in \mathbb{R}$. Therefore, no real number $x$ satisfies $f(x) = -1$, so $f$ can not be onto.\\
+    
+    \textbf{C:}\\ 
+    $f: \mathbb{R} \rightarrow \mathbb{R} \quad f(x) = -2x^2+3$\\
+    \textbf{Function:} Yes, this is a valid function since every real number input produces exactly one real number output.\\
+    \textbf{1-to-1:}\\
+    $f$ is \textbf{not} 1-to-1. Counterexample: $f(1) = -2(1)^2 + 3 = 1$ and $f(-1) = -2(-1)^2 + 3 = 1$, so $f(1) = f(-1)$ therefore $f$ can not be 1-to-1.\\
+    \textbf{Onto:}\\
+    $f$ is \textbf{not onto}. Since $-2x^2 \leq 0$ for all $x \in \mathbb{R}$, we have $f(x) = -2x^2 + 3 \leq 3$ for all $x \in \mathbb{R}$. The maximum value of $f$ is 3 (achieved when $x = 0$). Therefore, no real number $x$ satisfies $f(x) = 4$, so $f$ can not be onto.\\
+    
+    \textbf{D:}\\ 
+    $f: \mathbb{R} \rightarrow \mathbb{R} \quad f(x) = \frac{\sqrt{x}}{5}$\\
+    This is \textbf{not a valid function} from $\mathbb{R} \to \mathbb{R}$.\\
+    For negative real numbers like $x = -1 \in \mathbb{R}$, we have $f(-1) = \frac{\sqrt{-1}}{5}$, which is not a real number. Since the square root function is only defined for non-negative real numbers, $f$ is not defined on all of $\mathbb{R}$. Therefore, this is not a function from $\mathbb{R} \to \mathbb{R}$.\\
+
+\end{solution}
+
+\question[8] Define the following functions, (assume that the
+domains/codomains are defined such that each composition is valid) where:
+$$f(x) = 2x, $$$$g(x) = \frac{x}{(3+x)},$$$$ h(x) = 5x^2$$
+\begin{enumerate} [label=(\alph*)]
+ \item $f\circ g $
+ \item $h\circ g $
+ \item $f\circ g \circ h$
+ \item $h \circ g \circ f$
+\end{enumerate}
+
+\begin{solution}\\
+    Given:
+    $f(x) = 2x, \quad g(x) = \frac{x}{3+x}, \quad h(x) = 5x^2$
+    
+    \textbf{(a)} $f \circ g(x) = f(g(x))$:
+    \begin{align*}
+    f\left(\frac{x}{3+x}\right) = 2(\frac{x}{3+x}) = \boxed{\frac{2x}{3+x}}
+    \end{align*}
+    
+    \textbf{(b)} $h \circ g(x) = h(g(x))$:
+    \begin{align*}
+    h\left(\frac{x}{3+x}\right) = 5\left(\frac{x}{3+x}\right)^2 = \boxed{\frac{5x^2}{(3+x)^2}}
+    \end{align*}
+    
+    \textbf{(c)} $f \circ g \circ h(x) = f(g(h(x)))$:
+    \begin{align*}
+    g(h(x)) &= g(5x^2) = \frac{5x^2}{3+5x^2} \\[8pt]
+    f(g(h(x))) &= f\left(\frac{5x^2}{3+5x^2}\right) = 2 \cdot \frac{5x^2}{3+5x^2} = \boxed{\frac{10x^2}{3+5x^2}}
+    \end{align*}
+    
+    \textbf{(d)} $h \circ g \circ f(x) = h(g(f(x)))$:
+    \begin{align*}
+    g(f(x)) &= g(2x) = \frac{2x}{3+2x} \\[8pt] 
+    h(g(f(x))) &= h\left(\frac{2x}{3+2x}\right) = 5\left(\frac{2x}{3+2x}\right)^2 = \boxed{\frac{20x^2}{(3+2x)^2}}
+    \end{align*}
+\end{solution}
+
+\question[6] Let $f(x)$ and $g(x)$ be two linear functions. Note: a function is \emph{linear} if there exists $a, b \in \mathbb{R}$ such that $f(x) = ax + b$. 
+\begin{enumerate} [label=(\alph*)]
+    \item Prove or disprove: $f\circ g = g\circ f$.
+    \item Prove or disprove: $f \circ g$ and $g \circ f$ are linear functions.
+\end{enumerate}
+
+\begin{solution}\\
+    \textbf{A:} Prove or disprove: $f \circ g = g \circ f$\\
+    Disproof by counterexample:
+    Let $f(x) = 2x + 1$ and $g(x) = x + 3$.\\
+    Then:
+    \begin{align*}
+    (f \circ g)(x) &= f(g(x)) = f(x + 3) = 2(x + 3) + 1 = 2x + 7\\
+    (g \circ f)(x) &= g(f(x)) = g(2x + 1) = (2x + 1) + 3 = 2x + 4
+    \end{align*}
+    Since $2x + 7 \neq 2x + 4$, we have $f \circ g \neq g \circ f$.\\
+    Therefore, the statement is false.\\
+    
+    \textbf{B:} Prove or disprove: $f \circ g$ and $g \circ f$ are linear functions\\
+    \textbf{Proof:}\\
+    Let $f(x) = a_1x + b_1$ and $g(x) = a_2x + b_2$ where $a_1, a_2, b_1, b_2 \in \mathbb{R}$.\\
+    \textbf{For $f \circ g$:}
+    \begin{align*}
+    (f \circ g)(x) &= f(g(x))\\
+    &= f(a_2x + b_2)\\
+    &= a_1(a_2x + b_2) + b_1\\
+    &= a_1a_2x + a_1b_2 + b_1
+    \end{align*}
+    This has the form $cx + d$ where $c = a_1a_2$ and $d = a_1b_2 + b_1$.\\
+    Since $c, d \in \mathbb{R}$, $(f \circ g)(x)$ is a linear function.\\
+    \textbf{For $g \circ f$:}
+    \begin{align*}
+    (g \circ f)(x) &= g(f(x))\\
+    &= g(a_1x + b_1)\\
+    &= a_2(a_1x + b_1) + b_2\\
+    &= a_1a_2x + a_2b_1 + b_2
+    \end{align*}
+    This has the form $cx + d$ where $c = a_1a_2$ and $d = a_2b_1 + b_2$.\\
+    Since $c, d \in \mathbb{R}$, $(g \circ f)(x)$ is a linear function.\\
+    Therefore, both $f \circ g$ and $g \circ f$ are linear functions.
+\end{solution}
+
+\end{questions}
+
+\end{document}

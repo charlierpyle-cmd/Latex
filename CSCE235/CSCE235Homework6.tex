@@ -1,0 +1,215 @@
+\documentclass[10pt]{exam}
+\printanswers
+\usepackage{epsfig,amssymb}
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty} 
+\usepackage{listings}
+\setlength{\parindent}{0pt} %
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+\boxedpoints
+\addpoints
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{graphics}
+
+\pagestyle{headandfoot}
+\firstpageheader{\Large CSCE 235}{{\Large Assignment 6}}{\Large Spring 2026}
+
+\begin{document}
+
+\hrule
+
+\vspace{.50cm} Name:
+\text{Charlie Pyle} 
+\\ NUID: 22821006
+\vspace{.50cm}
+
+\textbf{Instructions} Follow instructions \emph{carefully}; failure to do so will result in points being deducted. 
+
+\begin{questions}
+
+
+\question[8] Prove, using induction, that  
+\[
+1^4 + 2^4 + 3^4 + \cdots + n^4 = \frac{n(n+1)(2n+1)(3n^2+3n-1)}{30}
+\]  
+whenever \(n\) is a positive integer.
+\begin{parts}
+ \part State and prove the basis step.
+ \part State the inductive hypothesis.
+ \part State the inductive conclusion.
+ \part Prove the inductive conclusion by the method of induction. You must justify the relevant steps.
+\end{parts}
+
+\begin{solution}
+    Enter your solution here:\\
+    \textbf{A:} Base case $n = 1$:
+    \[1^4 = \frac{1(1+1)(2\cdot1+1)(3\cdot1^2+3\cdot1-1)}{30}\]
+    \[\sum_{n=1}^{1} n^4 = 1 = 1 \checkmark \qquad \frac{1 \cdot 2 \cdot 3 \cdot 5}{30} = \frac{30}{30} = 1 \checkmark\]
+    
+    \textbf{B:} Inductive hypothesis
+    \[1^4 + 2^4 + 3^4 + \cdots + k^4 = \frac{k(k+1)(2k+1)(3k^2+3k-1)}{30}\]
+    
+    \textbf{C:} Inductive conclusion:
+    \[\underbrace{1^4 + 2^4 + 3^4 + \cdots + k^4}_{\text{IH}} + (k+1)^4
+    = \frac{(k+1)(k+2)(2k+3)(3(k+1)^2+3(k+1)-1)}{30}\]
+    
+    \textbf{D:} Prove:
+    \[\frac{k(k+1)(2k+1)(3k^2+3k-1)}{30} + (k+1)^4
+    = \frac{(k+1)(k+2)(2k+3)(3(k+1)^2+3(k+1)-1)}{30}\]
+    
+    \[\frac{k(k+1)(2k+1)(3k^2+3k-1) + 30(k+1)^4}{30}\]
+    
+    \[\frac{k+1}{30}\left[k(2k+1)(3k^2+3k-1) + 30(k+1)^3\right]\]
+    
+    Expanding $(2k^2+k)(3k^2+3k-1)$:
+    \[6k^4 + 6k^3 - 2k^2 + 3k^3 + 3k^2 - k = 6k^4 + 9k^3 + k^2 - k\]
+    
+    And $30(k+1)^3 = 30k^3 + 90k^2 + 90k + 30$
+    
+    Combining:
+    \[\frac{k+1}{30}\left[6k^4 + 39k^3 + 91k^2 + 89k + 30\right]\]
+    
+    We now expand the right-hand side target $(k+2)(2k+3)(3k^2+9k+5)$ to verify it equals the polynomial above.
+    
+    First, $(k+2)(2k+3) = 2k^2 + 7k + 6$.
+    
+    Then $(2k^2 + 7k + 6)(3k^2 + 9k + 5)$:
+    \[= 6k^4 + 18k^3 + 10k^2 + 21k^3 + 63k^2 + 35k + 18k^2 + 54k + 30\]
+    \[= 6k^4 + 39k^3 + 91k^2 + 89k + 30 \checkmark\]
+    
+    Since $3(k+1)^2 + 3(k+1) - 1 = 3k^2 + 9k + 5$, we conclude:
+    \[\frac{k+1}{30}(k+2)(2k+3)(3k^2+9k+5)
+    = \frac{(k+1)(k+2)(2k+3)\bigl(3(k+1)^2+3(k+1)-1\bigr)}{30}\]
+\end{solution}
+
+\question[8] Prove the following using induction whenever \( n \) is a positive integer.  
+\[
+\frac{1}{1 \cdot 2} + \frac{1}{2 \cdot 3} + \cdots + \frac{1}{n(n+1)} = 1 - \frac{1}{n+1}.
+\]
+\begin{parts}
+ \part State and prove the basis step.
+ \part State the inductive hypothesis.
+ \part State the inductive conclusion.
+ \part Prove the inductive conclusion by the method of induction. You must justify the relevant steps.
+\end{parts}
+
+\begin{solution}
+    Enter your solution here:\\
+    \textbf{A:} Base case $n = 1$:
+    \[\frac{1}{1(1+1)} = 1 - \frac{1}{1+1} \qquad \frac{1}{2} = \frac{1}{2} \checkmark\]
+    
+    \textbf{B:} Inductive hypothesis:
+    \[\frac{1}{1\cdot2} + \frac{1}{2\cdot3} + \cdots + \frac{1}{k(k+1)} = 1 - \frac{1}{k+1}\]
+    
+    \textbf{C:} Inductive conclusion:
+    \[\underbrace{\frac{1}{1\cdot2} + \frac{1}{2\cdot3} + \cdots + \frac{1}{k(k+1)}}_{\text{IH}}+ \frac{1}{(k+1)(k+2)} = 1 - \frac{1}{k+2}\]
+    
+    \textbf{D:} Prove:
+    \[1 - \frac{1}{k+1} + \frac{1}{(k+1)(k+2)}\]
+    
+    \[= 1 + \frac{1}{k+1}\left(-1 + \frac{1}{k+2}\right)\]
+    
+    \[= 1 + \frac{1}{k+1}\left(\frac{-(k+2)+1}{k+2}\right)\]
+    
+    \[= 1 + \frac{1}{k+1}\left(\frac{-(k+1)}{k+2}\right)\]
+    
+    \[= 1 - \frac{1}{k+2}\]
+
+\end{solution}
+
+\question[8] Prove, using induction, that 2 divides $n^3 + 3n$ whenever $n$ is a positive integer.
+\begin{parts}
+ \part State and prove the basis step.
+ \part State the inductive hypothesis.
+ \part State the inductive conclusion.
+ \part Prove the inductive conclusion by the method of induction. You must justify the relevant steps.
+\end{parts}
+
+\begin{solution}
+    Enter your solution here:\\
+    \textbf{A:} Show $2 \mid n^3 + 3n$.
+    
+    Base case $n = 1$: $2 \mid 1^3 + 3(1) = 4 = 2 \cdot 2$ \checkmark
+    
+    \textbf{B:} Inductive hypothesis: Assume $2 \mid k^3 + 3k$.
+    
+    \textbf{C:} Show: $2 \mid (k+1)^3 + 3(k+1)$.
+    
+    \textbf{D:} Expanding:
+    \[(k+1)^3 + 3(k+1) = k^3 + 3k^2 + 3k + 1 + 3k + 3\]
+    
+    \[= (3k^2 + 6k + 4) + \underbrace{k^3 + 3k}_{2M}\]
+    
+    \[= 2\!\underbrace{\left(\tfrac{3}{2}k^2 + 3k + 2\right)}_{a} + 2M\]
+    
+    \[= 2a + 2M = 2(a + M) = 2C\]
+\end{solution}
+
+\question[8]  An employee joined a company in 2020 with a starting salary of \$95,000. Every year, this employee receives a raise of \$1000 plus 3\% of the salary of the previous year.
+
+\begin{parts}
+\part Set up a recurrence relation for this employee's salary $n$ years after 2020. \textbf{Justify} your answer.
+\part  Using the iterative method, solve the recurrence relation for this employee's salary $n$ years after 2020.
+\part  Determine the salary of this employee in 2026.
+\end{parts}
+
+\begin{solution}
+    Enter your solution here:\\
+    \begin{align*}
+    P_0 &= 95000 \\
+    P_1 &= 95000(1.03) + 1000 \\
+    P_2 &= [95000(1.03) + 1000](1.03) + 1000 \\
+    P_3 &= P_2(1.03) + 1000
+    \end{align*}
+    
+    \[P_n = P_{n-1}(1.03) + 1000\]
+    
+    \[P_n = 1.03^n(95000) + 1000\left[\frac{1.03^n - 1}{0.03}\right]\]
+    
+    \[P_6 = 1.03^6(95000) + 1000\left[\frac{1.03^6 - 1}{0.03}\right]\approx 119{,}903\]
+\end{solution}
+
+
+
+\question[12] For the following recurrences, provide an asymptotic characterization using the \textbf{Master theorem}. 
+
+Note: Clearly show the values of the constants of the recurrence relation when using the Master theorem, and determine which case of the Master theorem applies to this recurrence relation.
+
+\begin{parts}
+  \part $T(n) = 2T(n/3) + 4$
+  \part $T(n) = 3T(n/3) + 3n$
+  \part $T(n) = 2T(n/2) + 3n^2$
+  \part $T(n) = 8T(n/2) + n^3$
+\end{parts}
+
+\begin{solution}
+    Enter your solution here:\\
+    \textbf{A:} $a = 2,\quad b = 3,\quad d = 0$
+    \[2 > 3^0 = 1\]
+    \[T(n) \in \mathcal{O}\!\left(n^{\log_3 2}\right)\]
+    
+    \textbf{B:} $a = 3,\quad b = 3,\quad d = 1$
+    \[3 = 3^1\]
+    \[T(n) \in \mathcal{O}(n \log n)\]
+    
+    \textbf{C:} $a = 2,\quad b = 2,\quad d = 2$
+    \[2 < 2^2 = 4\]
+    \[T(n) \in \mathcal{O}(n^2)\]
+    
+    \textbf{D:} $a = 8,\quad b = 2,\quad d = 3$
+    \[8 = 2^3\]
+    \[T(n) \in \theta(n^3 \log n)\]
+\end{solution}
+
+\end{questions}
+
+\end{document}

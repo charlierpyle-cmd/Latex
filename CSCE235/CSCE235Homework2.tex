@@ -1,0 +1,251 @@
+\documentclass[10pt]{exam}
+\printanswers
+\usepackage{epsfig,amssymb}
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty} 
+\usepackage{listings}
+\setlength{\parindent}{0pt} %
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+\boxedpoints
+\addpoints
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{graphics}
+
+\pagestyle{headandfoot}
+\firstpageheader{\Large CSCE 235}{{\Large Assignment 2}}{\Large Spring 2026}
+
+\begin{document}
+
+\hrule
+
+\vspace{.50cm} Name: Charlie Pyle 
+\\ NUID: 22821006
+\vspace{.50cm}
+
+\textbf{Instructions} Follow instructions \emph{carefully}, failure to do so will result in points being deducted. You may write or type out your answers. Be sure to show sufficient work to justify your answer(s).
+
+\begin{questions}
+
+\question[12] Translate in \textbf{two} ways each of these statements into logical
+expressions using predicates, quantifiers, and logical
+connectives. First, let the domain consist of the students in our CSCE235 and second, let it consist of all students on campus.
+\begin{parts}
+\part A student in CSCE 235 has gone on a Valentine’s date to the Capybara Cafe.
+\part Everyone in CSCE 235 loves going on romantic dates at the circus and eating Valentine’s candy hearts.
+\end{parts}
+
+\begin{solution}
+    Enter your solution here: \\
+    A: \\
+    Domain: Students in our CSCE235 
+     \begin{align*}
+        &\exists x \left[ C(x) \right] \\
+        &\text{Where C(x) = Gone on a Valentine’s date to the Capybara Cafe}
+     \end{align*}
+    Domain: All students on campus 
+    \begin{align*}
+         &\exists x \left[ S(x) \land C(x) \right] \\
+         &\text{Where S(x) = A student in CSCE 235} \\
+         &\text{Where C(x) = Gone on a Valentine’s date to the Capybara Cafe}
+     \end{align*}
+    \vspace{.1cm}
+    B: \\
+    Domain: Students in our CSCE235
+    \begin{align*}
+         &\forall x \left[ R(x) \land V(x) \right] \\
+         &\text{Where R(x) = Loves going on romantic dates at the circus} \\
+         &\text{Where V(x) = Loves eating Valentine’s candy hearts}
+     \end{align*}
+    Domain: All students on campus
+    \begin{align*}
+         &\forall x \left[ S(x) \rightarrow (R(x) \land V(x)) \right] \\
+         &\text{Where S(x) = A student in CSCE 235} \\
+         &\text{Where R(x) = Loves going on romantic dates at the circus} \\
+         &\text{Where V(x) = Loves eating Valentine’s candy hearts}
+     \end{align*}
+\end{solution}
+
+\question[15] What relevant conclusions can be drawn for each set of premises? Use predicates, logical connectives, and quantifiers to derive conclusions. Explain the rules of inference used to obtain each conclusion from the premises. If you can't derive a conclusion please state that as well for full credit.
+
+\begin{enumerate} [label=(\alph*)]
+  \item  “If I plan a Valentine’s date, then I’m exhausted the next day.” “I drink chocolate milk if I am exhausted.” “I didn’t drink any chocolate milk.”
+  \item ``Every student has a Valentine.” “Rob does not have a Valentine.” “Susan has a Valentine."
+  \item ``All foods that are healthy to eat do not taste yummy.” “Broccoli is healthy to eat.” “You only eat what tastes yummy.” “You do not eat broccoli.” “Chocolate truffles are not healthy to eat.''
+\end{enumerate}
+
+\begin{solution}
+\section*{(a) Valentine's Date}
+
+\textbf{Premises:}
+\begin{enumerate}
+    \item If I plan a Valentine's date, then I'm exhausted the next day. \quad $P(x) \to E(x)$
+    \item I drink chocolate milk if I am exhausted. \quad $E(x) \to C(x)$
+    \item I didn't drink any chocolate milk. \quad $\neg C(x)$
+\end{enumerate}
+
+\textbf{Derivation:}
+\begin{enumerate}
+    \item $P(x) \to E(x)$ \quad (Premise 1)
+    \item $E(x) \to C(x)$ \quad (Premise 2)
+    \item $\neg C(x)$ \quad (Premise 3)
+    \item $\neg E(x)$ \quad (Modus Tollens on 2, 3)
+    \item $\neg P(x)$ \quad (Modus Tollens on 1, 4)
+\end{enumerate}
+
+\textbf{Conclusion:} I didn't plan a Valentine's date. \quad $\neg P$
+
+\section*{(b) Valentine Ownership}
+
+\textbf{Premises:}
+\begin{enumerate}
+    \item Every student has a Valentine. \quad $\forall x [S(x) \to V(x)]$
+    \item Rob doesn't have a Valentine. \quad $S(r) \land \neg V(r)$
+    \item Susan has a Valentine. \quad $S(s) \land V(s)$
+\end{enumerate}
+
+\textbf{Derivation:}
+\begin{enumerate}
+    \item $\forall x [S(x) \to V(x)]$ \quad (Premise 1)
+    \item $S(r) \to V(r)$ \quad (Universal Instantiation on 1)
+    \item $S(r) \land \neg V(r)$ \quad (Premise 2)
+    \item $\neg V(r)$ \quad (Simplification on 3)
+    \item $\neg S(r)$ \quad (Modus Tollens on 2, 4)
+\end{enumerate}
+
+\textbf{Conclusion:} Rob is not a student. \quad $\neg S(r)$
+
+\section*{(c) Food and Health}
+
+\textbf{Premises:}
+\begin{enumerate}
+    \item All foods that are healthy to eat do not taste yummy. \quad $\forall x [H(x) \to \neg Y(x)]$
+    \item Broccoli is healthy to eat. \quad $H(b)$
+    \item You only eat what tastes yummy. \quad $\forall x [E(x) \to Y(x)]$
+    \item You do not eat broccoli. \quad $\neg E(b)$
+    \item Chocolate truffles are not healthy to eat. \quad $\neg H(c)$
+\end{enumerate}
+
+\textbf{Derivation:}
+\begin{enumerate}
+    \item $\forall x [H(x) \to \neg Y(x)]$ \quad (Premise 1)
+    \item $H(b)$ \quad (Premise 2)
+    \item $H(b) \to \neg Y(b)$ \quad (Universal Instantiation on 1)
+    \item $\neg Y(b)$ \quad (Modus Ponens on 2, 3)
+\end{enumerate}
+
+\textbf{Conclusion:} Broccoli does not taste yummy. \quad $\neg Y(b)$
+\end{solution}
+
+\question[5] Use a direct proof to show that the sum of two odd integers
+is even.
+\begin{solution}
+    Enter your solution here: 
+    \begin{center}
+    \textbf{Prove the sum of two odd integers is even}
+    \end{center}
+    Suppose $x$ is an odd integer and $y$ is an odd integer.\\
+    Then $x = 2a + 1$ for some integer $a$ by the definition of an odd number.\\
+    and $y = 2b + 1$ for some integer $b$ by the definition of an odd number. \\
+    So,
+    \begin{align*}
+    x + y &= (2a + 1) + (2b + 1)\\
+    &= 2a + 2b + 2\\
+    &= 2(a + b + 1)
+    \end{align*}
+    Which we can write as $2c$ where $c$ is an integer and $c = a + b + 1$. \\
+    Thus, the sum of two odd integers is even by the definition of an even number.
+\end{solution}
+
+\question[10] Prove that if $n$ is an integer and $7n+2$ is even, then $n$ is even using
+
+\begin{enumerate} [label=(\alph*)]
+  \item a proof by contraposition.
+  \item a proof by contradiction.
+\end{enumerate}
+
+\begin{solution}
+Enter your solution here: \\
+\textbf{A - Proof By Contraposition}
+    \begin{center}
+    \textbf{Prove that if $n$ is an integer and $7n+2$ is even, then $n$ is even}
+    \end{center}
+    Suppose $n$ is not even. Thus, $n$ is odd, $n = 2a + 1$ for some integer $a$.\\
+    So,
+    \begin{align*}
+    7n + 2 &= 7(2a + 1) + 2\\
+    &= 14a + 7 + 2\\
+    &= 14a + 8 + 1\\
+    &= 2(7a + 4) + 1\\
+    &= 2b + 1\\
+    \end{align*}
+    Which we can write as $2b + 1$ where $b$ is an integer and $b = 7a + 4$. \\
+    Consequently, $7n + 2$ is odd. Therefore, $7n + 2$ is not even.  \\
+    \\
+\textbf{B - Proof By Contradiction}
+    \begin{center}
+    \textbf{Prove that if $n$ is an integer and $7n+2$ is even, then $n$ is even}
+    \end{center}
+    Suppose $7n + 2$ is even and $n$ is odd, $n = 2a + 1$ for some integer a.\\
+    So,
+    \begin{align*}
+    7n + 2 &= 7(2a + 1) + 2\\
+    &= 14a + 7 + 2\\
+    &= 14a + 8 + 1\\
+    &= 2(7a + 4) + 1\\
+    &= 2b + 1\\
+    \end{align*}
+    Which we can write as $2b + 1$ where $b$ is an integer and $b = 7a + 4$. \\
+    Which shows that $7n + 2$ is odd. Therefore $7n + 2$ is not even, and this is a contradiction of the given statement.  \\
+    Thus if $7n + 2$ is even, then $n$ is even.
+\end{solution}
+
+\question[10] Prove that if $n$ is a positive integer, then $n$ is even if and only if $11n+2$ is even. (Hint: this is a biconditional)
+
+\begin{solution}
+Enter your solution here: \\
+    \begin{center}
+    \textbf{Prove that if $n$ is a positive integer, then $n$ is even if and only if $11n+2$ is even}
+    \end{center}
+    \text{Direct Proof} \\
+    Suppose $n$ is even, then $n = 2a$.\\
+    So,
+    \begin{align*}
+    11n + 2 &= 11(2a) + 2\\
+    &= 22a + 2\\
+    &= 2(11a + 1)\\
+    &= 2b\\
+    \end{align*}
+    Which we can write as $2b$ where $b$ is an integer and $b = 11a + 1$. \\
+    Thus, if $n$ is even then $11n+2$ is even.\\
+    
+    \text{Proof by Contrapositive}
+    \begin{center}
+    \textbf{Prove that if $n$ is a positive integer, then $n$ is even if and only if $11n + 2$ is even}
+    \end{center}
+    Suppose $n$ is not even. Thus, $n$ is odd, $n = 2a + 1$ for some integer $a$.\\
+    So,
+    \begin{align*}
+    11n + 2 &= 11(2a + 1) + 2\\
+    &= 22a + 11 + 2\\
+    &= 22a + 12 + 1\\
+    &= 2(11a + 6) + 1\\
+    &= 2b + 1\\
+    \end{align*}
+    Which we can write as $2b + 1$ where $b$ is an integer and $b = 11a + 6$. \\
+    Consequently, $11n + 2$ is odd, so $11n + 2$ is not even.  \\
+    
+    Therefore $11n + 2$ is even if and only if $n$ is even.\\
+\end{solution}
+
+\end{questions}
+
+\end{document}
