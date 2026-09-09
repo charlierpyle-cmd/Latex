@@ -1,0 +1,162 @@
+\documentclass[10pt]{exam}
+\printanswers
+\usepackage{epsfig,amssymb}
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty}
+\usepackage{listings}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+\boxedpoints
+\addpoints
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{graphics}
+
+\pagestyle{headandfoot}
+\firstpageheader{\Large Math 309}{{\Large Homework 1}}{\Large Fall 2026}
+
+\begin{document}
+
+\hrule
+
+\vspace{.50cm} Name:
+\text{Charlie Pyle}
+\vspace{.25cm}
+\begin{questions}
+\question Use the definition of an even integer to explain why 180 is even.
+
+\begin{solution}
+An integer $n$ is even provided that there exists an integer $a$ such that $n = 2a$.
+
+We have $180 = 2(90)$, and $90$ is an integer. Therefore, by the definition of an even integer, $180$ is even.
+\end{solution}
+
+\question Identify the hypothesis and conclusion for each of the following conditional statements. One of these statements is not written in ``if... then...'' format. First you must rewrite it in that format.
+
+\begin{parts}
+\part If $x$ is a negative real number, then $x^3$ is a negative real number.
+\part All cats are cute.
+\end{parts}
+
+\begin{solution}
+\textbf{Part 1:}
+
+Hypothesis: $x$ is a negative real number.
+
+Conclusion: $x^3$ is a negative real number.
+
+\textbf{Part 2:}\\
+The statement ``All cats are cute'' is not written in if-then format. Rewritten in if-then format, it reads: ``If an animal is a cat, then the animal is cute.''
+
+Hypothesis: An animal is a cat.
+
+Conclusion: The animal is cute.
+\end{solution}
+
+\question Consider the following statement:
+
+\textbf{Statement:} If $a$ and $b$ are odd integers and $n$ is an even integer, then $a^2n - b^2 + n$ is an odd integer.
+
+\begin{parts}
+\part Give two examples supporting this statement.
+\part Construct a know-show table outlining an argument you would use to prove the statement above.
+\part Write a complete proof for the statement above.
+\end{parts}
+
+\begin{solution}
+\textbf{Part 1: Two supporting examples}
+
+Let $a = 1$, $b = 1$, and $n = 2$. All three integers satisfy the hypotheses: $a$ and $b$ are odd, and $n$ is even. We compute
+\begin{align*}
+a^2n - b^2 + n = 1^2(2) - 1^2 + 2 = 2 - 1 + 2 = 3,
+\end{align*}
+and $3$ is an odd integer, as claimed.
+
+Let $a = 3$, $b = 5$, and $n = 4$. Again $a$ and $b$ are odd, and $n$ is even. We compute
+\begin{align*}
+a^2n - b^2 + n = 3^2(4) - 5^2 + 4 = 36 - 25 + 4 = 15,
+\end{align*}
+and $15$ is an odd integer, as claimed.
+
+\textbf{Part 2: Know-show table}
+
+\begin{center}
+\begin{tabular}{|c|p{7cm}|p{5cm}|}
+\hline
+Step & Know & Reason \\ \hline
+$P$ & $a$ and $b$ are odd integers, and $n$ is an even integer. & Hypothesis \\ \hline
+$P1$ & There exist integers $k$ and $m$ such that $a = 2k+1$ and $b = 2m+1$; there exists an integer $j$ such that $n = 2j$. & Definition of odd integer; definition of even integer \\ \hline
+$P2$ & $a^2n - b^2 + n = 2(4k^2j + 4kj + 2j - 2m^2 - 2m - 1) + 1$. & Algebra: substitute $P1$ into $a^2n-b^2+n$ and simplify \\ \hline
+$P3$ & $p = 4k^2j + 4kj + 2j - 2m^2 - 2m - 1$ is an integer. & Closure properties of addition and multiplication for integers \\ \hline
+\end{tabular}
+\end{center}
+ 
+\begin{center}
+\begin{tabular}{|c|p{7cm}|p{5cm}|}
+\hline
+Step & Show & Reason \\ \hline
+$Q1$ & There exists an integer $p$ such that $a^2n - b^2 + n = 2p + 1$. & Matches $P3$, since $p$ is an integer \\ \hline
+$Q$ & $a^2n - b^2 + n$ is an odd integer. & Definition of odd integer \\ \hline
+\end{tabular}
+\end{center}
+
+\textbf{Part 3: Complete proof}
+
+\textbf{Theorem.} If $a$ and $b$ are odd integers and $n$ is an even integer, then $a^2n - b^2 + n$ is an odd integer.
+
+\textit{Proof.} We assume that $a$ and $b$ are odd integers and that $n$ is an even integer, and we will prove that $a^2n - b^2 + n$ is an odd integer.
+
+Since $a$ is an odd integer, there exists an integer $k$ such that
+
+\begin{align*}
+a = 2k + 1.
+\end{align*}
+
+Since $b$ is an odd integer, there exists an integer $m$ such that
+
+\begin{align*}
+b = 2m + 1.
+\end{align*}
+
+Since $n$ is an even integer, there exists an integer $j$ such that
+
+\begin{align*}
+n = 2j.
+\end{align*}
+
+Using algebra, we obtain
+
+\begin{align*}
+a^2n - b^2 + n &= (2k+1)^2(2j) - (2m+1)^2 + 2j\\
+&= (4k^2+4k+1)(2j) - (4m^2+4m+1) + 2j\\
+&= 8k^2j + 8kj + 2j - 4m^2 - 4m - 1 + 2j\\
+&= 8k^2j + 8kj + 4j - 4m^2 - 4m - 1\\
+&= 2(4k^2j + 4kj + 2j - 2m^2 - 2m - 1) + 1.
+\end{align*}
+
+An integer $p$ can be defined by
+
+\begin{align*}
+p = 4k^2j + 4kj + 2j - 2m^2 - 2m - 1.
+\end{align*}
+
+Since $k$, $m$, and $j$ are integers, $p$ is an integer as well, by the closure properties of addition and multiplication for integers. We have shown that
+
+\begin{align*}
+a^2n - b^2 + n = 2p + 1,
+\end{align*}
+
+where $p$ is an integer. By the definition of an odd integer, we conclude that $a^2n - b^2 + n$ is an odd integer. This completes the proof. $\blacksquare$
+\end{solution}
+
+\end{questions}
+
+\end{document}
