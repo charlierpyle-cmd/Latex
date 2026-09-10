@@ -1,0 +1,189 @@
+\documentclass[10pt]{exam}
+\printanswers
+\usepackage{epsfig,amssymb}
+\usepackage{xcolor}
+\definecolor{darkred}{rgb}{0.5,0,0}
+\definecolor{darkgreen}{rgb}{0,0.5,0}
+\usepackage{hyperref}
+\usepackage{fullpage}
+\usepackage{tikz}
+\pagestyle{empty}
+\usepackage{listings}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{.25cm}
+\newcommand{\comment}[1]{}
+\boxedpoints
+\addpoints
+\usepackage{amsmath}
+\usepackage{algorithm2e}
+\usepackage{url}
+\usepackage{enumitem}
+\usepackage{graphics}
+
+\pagestyle{headandfoot}
+\firstpageheader{\Large Math 309}{{\Large Homework 3}}{\Large Fall 2026}
+
+\begin{document}
+
+\hrule
+
+\vspace{.50cm} Name:
+\text{Charlie Pyle}
+\vspace{.25cm}
+\begin{questions}
+
+\question Let $A = \{1, 2, \{3,4\}, \{5\}\}$. Decide which of each of the following statements are true or false.
+
+\begin{parts}
+\part $1 \in A$
+\part $\{1\} \in A$
+\part $\{5\} \in A$
+\part $\{1,2\} \in A$
+\part $\{1,2\} \subseteq A$
+\part $\emptyset \in A$
+\end{parts}
+
+\begin{solution}
+Enter your solution here:\\
+\textbf{(a)} $1 \in A$ \quad \textbf{True}. The element $1$ is listed explicitly as a member of $A$.
+
+\textbf{(b)} $\{1\} \in A$ \quad \textbf{False}. The set $\{1\}$ is not one of the four elements listed in $A$; only the element $1$ itself belongs to $A$.
+
+\textbf{(c)} $\{5\} \in A$ \quad \textbf{True}. The set $\{5\}$ is listed explicitly as a member of $A$.
+
+\textbf{(d)} $\{1,2\} \in A$ \quad \textbf{False}. The set $\{1,2\}$, taken as a single object, is not one of the four elements listed in $A$.
+
+\textbf{(e)} $\{1,2\} \subseteq A$ \quad \textbf{True}. Both $1 \in A$ and $2 \in A$, so every element of $\{1,2\}$ is an element of $A$.
+
+\textbf{(f)} $\emptyset \in A$ \quad \textbf{False}. The empty set is not one of the four elements listed in $A$.
+\end{solution}
+
+\question Consider the following logical equivalence:
+
+\begin{center}
+\textbf{Theorem.} For all logical statements $P$, $Q$, and $R$, we have
+\[(P \Rightarrow Q) \Rightarrow R \equiv \bigl((\lnot P) \Rightarrow R\bigr) \land (Q \Rightarrow R).\]
+\end{center}
+
+Prove Theorem 1 using previously established logical equivalences.
+
+\begin{solution}
+Enter your solution here:\\
+\textit{Proof.} We assume that $P$, $Q$, and $R$ are logical statements, and we will show that $(P \Rightarrow Q) \Rightarrow R$ is logically equivalent to $\bigl((\lnot P) \Rightarrow R\bigr) \land (Q \Rightarrow R)$ by simplifying the right-hand side with a chain of logical equivalences until it matches the left-hand side.
+\begin{align*}
+\bigl((\lnot P) \Rightarrow R\bigr) \land (Q \Rightarrow R)
+&\equiv (\lnot \lnot P \lor R) \land (\lnot Q \lor R)
+&& \text{Implication (applied twice)} \\
+&\equiv (P \lor R) \land (\lnot Q \lor R)
+&& \text{Double Negation} \\[2pt]
+&\equiv (P \land \lnot Q) \lor R
+&& \text{Distributive} \\[2pt]
+&\equiv (\lnot \lnot P \land \lnot Q) \lor R
+&& \text{Double Negation} \\[2pt]
+&\equiv \lnot (\lnot P \lor Q) \lor R
+&& \text{De Morgan} \\[2pt]
+&\equiv \lnot (P \Rightarrow Q) \lor R
+&& \text{Implication} \\[2pt]
+&\equiv (P \Rightarrow Q) \Rightarrow R
+&& \text{Implication}
+\end{align*}
+
+Since each step above is a logical equivalence, we conclude that
+\[(P \Rightarrow Q) \Rightarrow R \equiv \bigl((\lnot P) \Rightarrow R\bigr) \land (Q \Rightarrow R).\]
+$\blacksquare$
+\end{solution}
+
+\question Use set builder notation to write down the following sets:
+
+\begin{parts}
+\part The set $A$ of all odd positive integers.
+\part The set $B$ of all real numbers strictly larger than $\pi$.
+\part The set $C$ given by
+\[C = \left\{ \ldots, 2^{-4}, 2^{-3}, 2^{-2}, \frac{1}{2}, 1 \right\}.\]
+\end{parts}
+
+\begin{solution}
+Enter your solution here:\\
+\textbf{(a)}
+\begin{align*}
+A = \{x \mid x = 2k+1, \ k \in \mathbb{Z}, \ k \geq 0\}
+\end{align*}
+
+\textbf{(b)}
+\begin{align*}
+B = \{x \in \mathbb{R} \mid x > \pi\}
+\end{align*}
+
+\textbf{(c)} 
+\begin{align*}
+C = \{x \mid x = 2^{n}, \ n \in \mathbb{Z}, \ n \leq 0\}
+\end{align*}
+\end{solution}
+
+\question Consider the following statements:
+\begin{parts}
+\part There exists a rational number that is less than or equal to $-1010$.
+\part For all integers $x$ and $y$, we have $xy > x$.
+\part For all real numbers $\epsilon$, there exists a real number $\delta$ such that if $|x - \pi| < \delta$, then $|\sin(x)| < \epsilon$.
+\end{parts}
+
+For each statement, complete the following three tasks:
+\begin{itemize}
+\item Rewrite the statement in symbolic form.
+\item Write its negation in symbolic form.
+\item Write a useful negation of each of the following statements as English sentences, without symbols for quantifiers, but where you can use symbols as they were used in the original statements.
+\end{itemize}
+
+\begin{solution}
+Enter your solution here:\\
+
+\textbf{(a)} There exists a rational number that is less than or equal to $-1010$.
+
+Symbolic form:
+\begin{align*}
+\exists x \in \mathbb{Q} \ (x \leq -1010)
+\end{align*}
+
+Negation (symbolic form):
+\begin{align*}
+\lnot \bigl[\exists x \in \mathbb{Q} \ (x \leq -1010)\bigr] \equiv \forall x \in \mathbb{Q} \ (x > -1010)
+\end{align*}
+
+Useful negation (English sentence): Every rational number $x$ satisfies $x > -1010$.
+
+\vspace{.2cm}
+\textbf{(b)} For all integers $x$ and $y$, we have $xy > x$.
+
+Symbolic form:
+\begin{align*}
+\forall x \in \mathbb{Z} \ \forall y \in \mathbb{Z} \ (xy > x)
+\end{align*}
+
+Negation (symbolic form):
+\begin{align*}
+\lnot \bigl[\forall x \in \mathbb{Z} \ \forall y \in \mathbb{Z} \ (xy > x)\bigr] \equiv \exists x \in \mathbb{Z} \ \exists y \in \mathbb{Z} \ (xy \leq x)
+\end{align*}
+
+Useful negation (English sentence): There exist integers $x$ and $y$ such that $xy \leq x$.
+
+\vspace{.2cm}
+\textbf{(c)} For all real numbers $\epsilon$, there exists a real number $\delta$ such that if $|x - \pi| < \delta$, then $|\sin(x)| < \epsilon$.
+
+Symbolic form:
+\begin{align*}
+\forall \epsilon \in \mathbb{R} \ \exists \delta \in \mathbb{R} \ \bigl(|x - \pi| < \delta \rightarrow |\sin(x)| < \epsilon\bigr)
+\end{align*}
+
+Negation (symbolic form):
+\begin{align*}
+\lnot \bigl[\forall \epsilon \in \mathbb{R} \ \exists \delta \in \mathbb{R} \ \bigl(|x - \pi| < \delta \rightarrow |\sin(x)| < \epsilon\bigr)\bigr]
+\equiv \exists \epsilon \in \mathbb{R} \ \forall \delta \in \mathbb{R} \ \bigl(|x - \pi| < \delta \land |\sin(x)| \geq \epsilon\bigr)
+\end{align*}
+
+Useful negation (English sentence): There exists a real number $\epsilon$ such that for every real number $\delta$, we have $|x - \pi| < \delta$ and $|\sin(x)| \geq \epsilon$.
+
+\end{solution}
+
+\end{questions}
+
+\end{document}
